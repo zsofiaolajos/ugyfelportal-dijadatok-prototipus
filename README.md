@@ -1,4 +1,4 @@
-﻿# Ügyfél Portál – Díjadatok prototípus
+# Ügyfél Portál – Díjadatok prototípus
 
 Kattintható prototípus, amely egy biztosítási szerződés folyószámláját (befizetések, kifizetések, díjelőírások, díjhátralék, speciális könyvelések) mutatja be két nézetben:
 
