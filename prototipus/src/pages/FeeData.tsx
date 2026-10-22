@@ -5,12 +5,14 @@ import AppHeader from '../components/AppHeader'
 import ContractHeader from '../components/ContractHeader'
 import DemoBar from '../components/DemoBar'
 import LedgerTable from '../components/LedgerTable'
+import PairingView from '../components/PairingView'
 import StatusLine from '../components/StatusLine'
 import Timeline from '../components/Timeline'
 import { getFolyoszamla } from '../data/ledger'
 import { osszesito } from '../domain/account'
 import { ugyintezoOsszesito } from '../domain/advancedSummary'
 import { fokonyv } from '../domain/ledgerTable'
+import { parositasNezet } from '../domain/pairing'
 import { ugyfelAllapotsor } from '../domain/statusLine'
 import { idovonal } from '../domain/timeline'
 import type { Role } from '../domain/types'
@@ -60,9 +62,10 @@ function FeeData() {
                 <AdvancedSummary adat={ugyintezoOsszesito(contract, osz)} />
                 {/* key: szerződésváltáskor a szűrők alaphelyzetbe állnak */}
                 <LedgerTable key={contract.szerzodesszam} adat={fokonyv(fsz, osz)} szerzodesszam={contract.szerzodesszam} />
-                {/* Helyőrző: párosítás, speciális könyvelések, gyors válaszok (D4–D6) */}
+                <PairingView adat={parositasNezet(fsz, osz)} />
+                {/* Helyőrző: speciális könyvelések, gyors válaszok (D5–D6) */}
                 <section className="fee-data__placeholder">
-                  Itt jelenik meg a párosítás, a speciális könyvelések és a gyors válaszok (D4–D6 lépések).
+                  Itt jelenik meg a speciális könyvelések kezelése és a gyors válaszok (D5–D6 lépések).
                 </section>
               </>
             )}

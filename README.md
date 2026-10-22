@@ -1,4 +1,4 @@
-# Ügyfél Portál – Díjadatok prototípus
+﻿# Ügyfél Portál – Díjadatok prototípus
 
 Kattintható prototípus, amely egy biztosítási szerződés folyószámláját (befizetések, kifizetések, díjelőírások, díjhátralék, speciális könyvelések) mutatja be két nézetben:
 
@@ -52,5 +52,5 @@ prezentacio/    a folyamatot bemutató prezentáció (.pptx) és a generáló sz
 | A | Tartalom és szabályok (kód nélkül) | kész |
 | B | Alapok: projekt, arculat, adatréteg, demósáv | kész |
 | C | Ügyfél nézet: állapotsor, idővonal, magyarázatok, mobil | kész |
-| D | Ügyintézői nézet: összesítő (D1), tételtábla (D2), szűrés/keresés/rendezés/CSV-export (D3) kész; párosítás, speciális könyvelések, gyors válaszok (D4–D6) | folyamatban |
+| D | Ügyintézői nézet: összesítő (D1), tételtábla (D2), szűrés/keresés/rendezés/CSV-export (D3), párosítás (D4) kész; speciális könyvelések, gyors válaszok (D5–D6) | folyamatban |
 | E | Teljes végigkattintás, tesztforgatókönyvek, bemutató | hátra van |
