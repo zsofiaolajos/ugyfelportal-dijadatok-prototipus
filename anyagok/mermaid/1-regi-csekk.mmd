@@ -1,0 +1,42 @@
+flowchart TD
+  q(["Kovács Anna kérdése:<br/>„Mindig befizetem a csekket,<br/>miért van elmaradásom?”"]):::question
+  q --> open["Díjadatok megnyitása<br/>Otthonbiztosítás · 30012345"]
+  open --> st["⚠ Nem rendezett díj: 2 760 Ft<br/>2 díjrészlet nincs teljesen kifizetve.<br/>A részleteket lent, az idővonalon találja."]:::warn
+  st --> hd["Szerződés fő adatai<br/>Díjfizetés módja: postai csekk<br/>Aktuális díj: 25 380 Ft / negyedév"]
+  hd --> tl
+
+  subgraph tl["Idővonal"]
+    direction TB
+    up["KÖZELGŐ · I. negyedéves díj<br/>2027. január 1. · 25 380 Ft"]:::item
+    o1["OKTÓBER 2. · Befizetés megérkezett (csekk)<br/>+24 000 Ft"]:::item
+    o2["OKTÓBER 1. · IV. negyedéves díj<br/>25 380 Ft · ⚠ Nem rendezett"]:::warn
+    j1["JÚLIUS 16. · Fizetési emlékeztetőt küldtünk"]:::item
+    j2["JÚLIUS 3. · Befizetés megérkezett (csekk)<br/>+24 000 Ft"]:::item
+    j3["JÚLIUS 1. · III. negyedéves díj<br/>25 380 Ft · ⚠ Nem rendezett"]:::warn
+    j4["JÚLIUS 1. · Díjváltozás (indexálás)<br/>24 000 Ft → 25 380 Ft"]:::item
+    old["ÁPRILIS – JANUÁR<br/>I–II. negyedéves díj · ✓ Kifizetve"]:::item
+    up --> o1 --> o2 --> j1 --> j2 --> j3 --> j4 --> old
+  end
+
+  o2 -->|"kattint"| e1["Ebből 24 000 Ft érkezett be, 1 380 Ft még hiányzik.<br/>A díj 24 000 Ft-ról 25 380 Ft-ra változott (indexálás),<br/>a befizetés még a korábbi összegnek felelt meg.<br/>Kérjük, a jövőben az új összeget fizesse be.<br/>─<br/>Díj: 25 380 Ft · Befizetve: 24 000 Ft · Hiányzik: 1 380 Ft"]:::expl
+  j4 -->|"kattint"| e2["2026. július 1-jén a díj indexálás miatt<br/>5,75%-kal változott: 24 000 Ft helyett 25 380 Ft.<br/>Ha csekkel fizet, kérjük, már az új összeget fizesse be."]:::expl
+  o1 -->|"kattint"| e3["Ezzel rendeztük: IV. negyedéves díj.<br/>Fizetési mód: postai csekk · Jogcím: rendszeres díj"]:::expl
+
+  e1 --> aha{"Felismeri:<br/>a régi csekket használta"}
+  e2 --> aha
+  aha --> res(["Befizeti a hiányzó 2 × 1 380 Ft-ot,<br/>a jövőben 25 380 Ft-ot fizet<br/>→ nincs CC-hívás"]):::result
+
+  subgraph hidden["Nem jelenik meg az ügyfélnek"]
+    direction TB
+    h1["Duplikált csekkimport és stornója<br/>– csak a helyes befizetés látszik"]:::hidden
+    h2["Felszólítási szint (1.)<br/>és hátralék kora (99 nap)"]:::hidden
+  end
+  style tl fill:#fafafc,stroke:#dae1e9,color:#283168
+  style hidden fill:#fff8f7,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+
+  classDef question fill:#ffffff,stroke:#283168,color:#283168,stroke-width:2px
+  classDef warn fill:#fff4d6,stroke:#c08a00,color:#5c3d00
+  classDef item fill:#ffffff,stroke:#dae1e9,color:#30373d
+  classDef expl fill:#f3f0fb,stroke:#7c6bb0,color:#30373d
+  classDef hidden fill:#ffffff,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+  classDef result fill:#00875f,stroke:#00875f,color:#ffffff

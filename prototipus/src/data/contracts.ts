@@ -1,0 +1,70 @@
+import type { Contract } from '../domain/types'
+
+// Mock szerződések – anyagok/mintaadat.md, 1–4. forgatókönyv.
+export const contracts: Contract[] = [
+  {
+    szerzodesszam: '30012345',
+    termek: 'LAKAS',
+    termekNev: 'Otthonbiztosítás',
+    szerzodo: 'Kovács Anna',
+    biztositottTargy: '1118 Budapest, Minta utca 12.',
+    kockazatviselesKezdete: '2021-07-01',
+    evfordulo: '07.01.',
+    dijfizetesiGyakorisag: 'negyedéves',
+    dijfizetesiMod: 'postai csekk',
+    aktualisDij: 25380,
+    evesDij: 101520,
+    allapot: 'DIJRENDEZETLEN',
+  },
+  {
+    szerzodesszam: '30054321',
+    termek: 'LAKAS',
+    termekNev: 'Otthonbiztosítás',
+    szerzodo: 'Nagy Péter',
+    biztositottTargy: '2040 Budaörs, Példa utca 3.',
+    kockazatviselesKezdete: '2022-08-01',
+    evfordulo: '08.01.',
+    dijfizetesiGyakorisag: 'havi',
+    dijfizetesiMod: 'csoportos beszedés',
+    lehivasiBankszamla: '11773016-12345678',
+    aktualisDij: 6874,
+    evesDij: 82488,
+    allapot: 'ELO',
+  },
+  {
+    szerzodesszam: '30067890',
+    termek: 'KGFB',
+    termekNev: 'Kötelező gépjármű-felelősségbiztosítás',
+    szerzodo: 'Kovács Anna',
+    biztositottTargy: 'ABC-123 · Suzuki Vitara',
+    kockazatviselesKezdete: '2024-01-01',
+    evfordulo: '01.01.',
+    dijfizetesiGyakorisag: 'negyedéves',
+    dijfizetesiMod: 'átutalás',
+    aktualisDij: 18300,
+    evesDij: 73200,
+    allapot: 'MEGSZUNT',
+    megszunesDatuma: '2026-08-30',
+    megszunesOka: 'díjnemfizetés',
+  },
+  {
+    szerzodesszam: '30098765',
+    termek: 'CASCO',
+    termekNev: 'Casco',
+    szerzodo: 'Nagy Péter',
+    biztositottTargy: 'XYZ-987 · Škoda Octavia',
+    kockazatviselesKezdete: '2025-06-01',
+    evfordulo: '06.01.',
+    dijfizetesiGyakorisag: 'éves',
+    dijfizetesiMod: 'átutalás',
+    aktualisDij: 248400,
+    evesDij: 248400,
+    allapot: 'MEGSZUNT',
+    megszunesDatuma: '2026-09-15',
+    megszunesOka: 'gépjármű eladása',
+  },
+]
+
+export function findContract(szerzodesszam: string | undefined): Contract | undefined {
+  return contracts.find((c) => c.szerzodesszam === szerzodesszam)
+}

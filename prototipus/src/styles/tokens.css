@@ -1,0 +1,63 @@
+/*
+ * Design tokenek – a groupama.hu nyilvános oldaláról kinyert értékek (2026-10-08).
+ * A Groupama saját betűtípusa (Circular) licences, helyette DM Sans + rendszerfont.
+ */
+:root {
+  /* Márkaszínek */
+  --brand-green: #45c396;       /* elsődleges gomb, kiemelés */
+  --brand-green-dark: #00b08a;  /* hover, link, pozitív összeg */
+  --brand-navy: #283168;        /* címsorok, fejléc */
+  --brand-yellow: #ffd36f;      /* figyelemfelhívás */
+
+  /* Szöveg */
+  --text: #30373d;
+  --text-2: #4a545e;
+  --text-muted: #6c7b8a;
+  --text-on-brand: #ffffff;
+
+  /* Felületek */
+  --bg: #fafafc;
+  --bg-alt: #f3f3f9;
+  --surface: #ffffff;
+  --border: #dae1e9;
+
+  /* Státuszszínek (szín + ikon + szöveg együtt, sosem csak szín) */
+  --ok: #00875f;
+  --ok-bg: #e6f7f1;
+  --warn: #8a5a00;
+  --warn-bg: #fff4d6;
+  --danger: #c0392b;
+  --danger-bg: #fdecea;
+  --info: #283168;
+  --info-bg: #eef0f8;
+  --neutral: #4a545e;
+  --neutral-bg: #f0f2f5;
+
+  /* Tipográfia */
+  --font: 'DM Sans', circular, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 20px;
+  --fs-xl: 28px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+
+  /* Térköz (4px rács) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+
+  /* Forma */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-pill: 30px;
+  --shadow-card: 0 6px 12px rgba(40, 49, 104, 0.1);
+
+  --content-width: 1120px;
+}

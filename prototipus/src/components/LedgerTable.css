@@ -1,0 +1,151 @@
+.ledger {
+  display: grid;
+  gap: var(--sp-4);
+  margin-top: var(--sp-5);
+}
+
+.ledger__block {
+  padding: var(--sp-4) 0 0;
+}
+
+.ledger__head {
+  padding: 0 var(--sp-4) var(--sp-3);
+}
+
+.ledger__hint {
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* Széles tábla: saját vízszintes görgetés, az oldal nem görget oldalra */
+.ledger__scroll {
+  overflow-x: auto;
+  border-top: 1px solid var(--border);
+}
+
+.ledger__table {
+  width: 100%;
+  min-width: 960px;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.ledger__table th {
+  position: sticky;
+  top: 0;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ledger__table td {
+  padding: var(--sp-2) var(--sp-3);
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.ledger__table .num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger__table .date {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger__table .item {
+  min-width: 260px;
+}
+
+.ledger__name {
+  display: block;
+  font-weight: var(--fw-medium);
+}
+
+.ledger__table code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: var(--fs-xs);
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--bg-alt);
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+.ledger__details {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.ledger__table .credit {
+  color: var(--ok);
+  font-weight: var(--fw-medium);
+}
+
+.ledger__table .balance {
+  font-weight: var(--fw-bold);
+}
+
+.ledger__table .balance.is-negative,
+.ledger__table .is-open {
+  color: var(--warn);
+  font-weight: var(--fw-bold);
+}
+
+.ledger__table .badge {
+  font-size: var(--fs-xs);
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.ledger__table .badge__icon {
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+}
+
+/* Nem könyvelt (függő / sikertelen) tétel */
+.ledger__table tr.is-muted td {
+  background: #fcfcfd;
+}
+.ledger__table tr.is-muted .ledger__name,
+.ledger__table tr.is-muted .credit {
+  color: var(--text-2);
+}
+
+/* Törölt díjelvárás */
+.ledger__table tr.is-deleted td {
+  color: var(--text-muted);
+}
+.ledger__table tr.is-deleted .amount,
+.ledger__table tr.is-deleted .ledger__name {
+  text-decoration: line-through;
+}
+
+.ledger__table tfoot td {
+  background: var(--bg-alt);
+  border-top: 2px solid var(--border);
+  padding-top: var(--sp-3);
+  padding-bottom: var(--sp-3);
+}
+
+.ledger__block:last-child .ledger__table,
+.ledger__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.ledger__block {
+  overflow: hidden;
+}

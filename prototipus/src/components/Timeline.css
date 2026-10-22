@@ -1,0 +1,296 @@
+.timeline {
+  margin-top: var(--sp-5);
+}
+
+.tl-group {
+  margin-top: var(--sp-5);
+}
+
+.tl-group__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.tl-group--upcoming {
+  margin-top: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4) var(--sp-1);
+  border-radius: var(--radius-sm);
+  background: var(--bg-alt);
+}
+
+.tl-group--upcoming .tl-group__title {
+  color: var(--brand-navy);
+}
+
+.tl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline__hint {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* Tétel: ikon a függőleges vonalon, középen szöveg, jobbra összeg */
+.tl-item {
+  position: relative;
+}
+
+.tl-item__head {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  gap: var(--sp-3);
+  align-items: start;
+  width: 100%;
+  padding: var(--sp-3) var(--sp-2);
+  margin: 0 calc(-1 * var(--sp-2));
+  box-sizing: content-box;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+button.tl-item__head {
+  cursor: pointer;
+}
+
+button.tl-item__head:hover {
+  background: var(--bg-alt);
+}
+
+button.tl-item__head:focus-visible {
+  outline: 2px solid var(--brand-green-dark);
+  outline-offset: 0;
+}
+
+.tl-item + .tl-item::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: -12px;
+  height: 24px;
+  border-left: 2px solid var(--border);
+}
+
+.tl-item__body {
+  display: block;
+  min-width: 0;
+}
+
+.tl-item__title,
+.tl-item__sub {
+  display: block;
+}
+
+.tl-item__end {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.tl-item__chevron {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.15s;
+}
+
+.tl-item.is-open .tl-item__chevron {
+  transform: rotate(180deg);
+}
+
+/* Kibontott magyarázat – az ikonoszlop után igazítva */
+.tl-item__details {
+  margin: 0 0 var(--sp-3) calc(36px + var(--sp-3));
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-sm);
+  background: var(--bg-alt);
+  font-size: var(--fs-sm);
+  color: var(--text);
+}
+
+.tl-item__details p + p {
+  margin-top: var(--sp-2);
+}
+
+.tl-item__details dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--sp-2) var(--sp-4);
+  margin: var(--sp-3) 0 0;
+}
+
+.tl-item__details dt {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.tl-item__details dd {
+  margin: 0;
+  font-weight: var(--fw-medium);
+}
+
+.tl-item__link {
+  display: inline-block;
+  margin-top: var(--sp-3);
+  color: var(--brand-green-dark);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+}
+
+.tl-item__link:hover {
+  text-decoration: underline;
+}
+
+.tl-item__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--neutral-bg);
+}
+
+.tl-item__icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--neutral);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tl-item__title {
+  font-weight: var(--fw-medium);
+  color: var(--text);
+}
+
+.tl-item__sub {
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+}
+
+.tl-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-3);
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.tl-item__meta .badge {
+  font-size: var(--fs-xs);
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.tl-item__meta .badge__icon {
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+}
+
+.tl-item__amount {
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-item__amount--be { color: var(--ok); }
+.tl-item__amount--ki { color: var(--text); }
+.tl-item__amount--semleges { color: var(--text-2); font-weight: var(--fw-medium); }
+
+/* Típusonkénti ikonszínek */
+.tl-item--dij .tl-item__icon { background: var(--info-bg); }
+.tl-item--dij .tl-item__icon svg { stroke: var(--info); }
+
+.tl-item--befizetes .tl-item__icon { background: var(--ok-bg); }
+.tl-item--befizetes .tl-item__icon svg { stroke: var(--ok); }
+
+.tl-item--kifizetes .tl-item__icon { background: var(--info-bg); }
+.tl-item--kifizetes .tl-item__icon svg { stroke: var(--info); }
+
+.tl-item--atkonyveles .tl-item__icon { background: #e3f4f8; }
+.tl-item--atkonyveles .tl-item__icon svg { stroke: #0b7285; }
+
+.tl-item--sikertelen .tl-item__icon { background: var(--danger-bg); }
+.tl-item--sikertelen .tl-item__icon svg { stroke: var(--danger); }
+.tl-item--sikertelen .tl-item__amount { text-decoration: line-through; color: var(--text-muted); }
+
+.tl-item--dijvaltozas .tl-item__icon,
+.tl-item--emlekezteto .tl-item__icon { background: var(--warn-bg); }
+.tl-item--dijvaltozas .tl-item__icon svg,
+.tl-item--emlekezteto .tl-item__icon svg { stroke: var(--warn); }
+
+/*
+ * Mobil: az összeg a cím mellől a dátum sorába kerül, így a cím szinte a teljes
+ * szélességet kapja (nem törik 3 sorba). A body/end csomagolók "feloldódnak" a rácsban.
+ */
+@media (max-width: 600px) {
+  .tl-item__head {
+    /* 4 oszlop: a cím az összeg oszlopát is megkapja, csak a nyíl marad mellette */
+    grid-template-columns: 32px minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      'icon title title chevron'
+      'icon sub sub sub'
+      'icon meta amount amount';
+    column-gap: var(--sp-3);
+    row-gap: 0;
+    min-height: 48px; /* koppintási felület */
+  }
+  .tl-item__body,
+  .tl-item__end {
+    display: contents;
+  }
+  .tl-item__icon {
+    grid-area: icon;
+    width: 32px;
+    height: 32px;
+  }
+  .tl-item__title { grid-area: title; }
+  .tl-item__sub { grid-area: sub; }
+  .tl-item__meta {
+    grid-area: meta;
+    align-self: center;
+  }
+  .tl-item__amount {
+    grid-area: amount;
+    align-self: center;
+    margin-top: 2px;
+  }
+  .tl-item__chevron {
+    grid-area: chevron;
+    margin-top: 2px;
+  }
+  .tl-item + .tl-item::before {
+    left: 15px;
+  }
+  .tl-item__details {
+    margin-left: 0;
+    padding: var(--sp-3);
+  }
+  .tl-item__details dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

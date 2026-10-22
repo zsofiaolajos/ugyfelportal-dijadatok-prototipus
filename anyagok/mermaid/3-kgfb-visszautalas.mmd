@@ -1,0 +1,48 @@
+flowchart TD
+  q(["Kovács Anna kérdése:<br/>„Megszűnt a KGFB-m, de befizettem a díjat –<br/>hol a pénzem?”"]):::question
+  q --> open["Díjadatok megnyitása<br/>Kötelező gépjármű-felelősségbiztosítás · 30067890"]
+  open --> st["ℹ Visszatérítés folyamatban: 6 166 Ft<br/>Várhatóan 2026. október 12-ig<br/>megérkezik a bankszámlájára."]:::info
+  st --> hd["Szerződés fő adatai<br/>Gépjármű: ABC-123 · Suzuki Vitara<br/>Megszűnés: 2026. 08. 30. – díjnemfizetés"]
+  hd --> tl
+
+  subgraph tl["Idővonal"]
+    direction TB
+    o1["OKTÓBER 7. · Díjvisszatérítés a bankszámlájára<br/>−6 166 Ft · ℹ Feldolgozás alatt"]:::info
+    o2["OKTÓBER 6. · Befizetés megérkezett (átutalás)<br/>+18 300 Ft"]:::item
+    a1["AUGUSZTUS 30. · A szerződés díjnemfizetés<br/>miatt megszűnt"]:::item
+    a2["AUGUSZTUS 15. · Fizetési emlékeztetőt küldtünk"]:::item
+    j1["JÚLIUS 16. · Fizetési emlékeztetőt küldtünk"]:::item
+    j2["JÚLIUS 1. · Díj a megszűnésig<br/>12 134 Ft · ✓ Kifizetve"]:::ok
+    old["ÁPRILIS – JANUÁR<br/>I–II. negyedéves díj · ✓ Kifizetve"]:::item
+    o1 --> o2 --> a1 --> a2 --> j1 --> j2 --> old
+  end
+
+  o1 -->|"kattint"| e1["A túlfizetést visszautaljuk a bankszámlájára.<br/>Az elszámolás néhány munkanapot vesz igénybe.<br/>─<br/>Bankszámla: 11600006-87654321<br/>Várható érkezés: 2026. október 12."]:::expl
+  o2 -->|"kattint"| e2["Ezzel rendeztük: Díj a megszűnésig.<br/>A fennmaradó 6 166 Ft túlfizetés lett –<br/>lásd a visszatérítést."]:::expl
+  j2 -->|"kattint"| e3["A szerződés 2026. augusztus 30-án megszűnt,<br/>ezért csak a megszűnésig tartó időszak díját<br/>kell megfizetni.<br/>─<br/>Időszak: 2026. július 1. – augusztus 30.<br/>Díj: 12 134 Ft · Befizetve: 12 134 Ft"]:::expl
+
+  e2 --> calc["Az ügyfél a tételekből összerakja:<br/>18 300 Ft befizetés<br/>− 12 134 Ft díj a megszűnésig<br/>= 6 166 Ft visszajár"]:::calc
+  e3 --> calc
+  e1 --> wait{"Megérkezett<br/>október 12-ig?"}
+  calc --> wait
+  wait -->|"igen"| res(["Tudja, mennyit, mikor és hova kap<br/>→ nincs CC-hívás"]):::result
+  wait -->|"nem"| cc(["CC-hez fordul<br/>(ügyintézői nézet – D szakasz)"]):::outside
+
+  subgraph hidden["Nem jelenik meg az ügyfélnek"]
+    direction TB
+    h1["Az eredeti III. negyedéves díj (18 300 Ft)<br/>– törölve, megszűnés miatt újraszámolva"]:::hidden
+    h2["Időarányos díj kerekítése (+0,30 Ft)"]:::hidden
+    h3["Felszólítási szintek (1., 2.)<br/>és a 3 munkanapos visszautalási szabály"]:::hidden
+  end
+  style tl fill:#fafafc,stroke:#dae1e9,color:#283168
+  style hidden fill:#fff8f7,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+
+  classDef question fill:#ffffff,stroke:#283168,color:#283168,stroke-width:2px
+  classDef info fill:#eef0f8,stroke:#283168,color:#283168
+  classDef ok fill:#e6f7f1,stroke:#00875f,color:#00573d
+  classDef item fill:#ffffff,stroke:#dae1e9,color:#30373d
+  classDef expl fill:#f3f0fb,stroke:#7c6bb0,color:#30373d
+  classDef calc fill:#fafafc,stroke:#4a545e,color:#30373d,stroke-dasharray:2 2
+  classDef hidden fill:#ffffff,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+  classDef result fill:#00875f,stroke:#00875f,color:#ffffff
+  classDef outside fill:#f0f2f5,stroke:#9aa5b1,color:#4a545e,stroke-dasharray:4 3

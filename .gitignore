@@ -1,0 +1,15 @@
+# Függőségek és build-kimenet
+node_modules/
+dist/
+dist-ssr/
+
+# Naplók, helyi fájlok
+*.log
+*.local
+.DS_Store
+Thumbs.db
+
+# Helyi fejlesztői beállítások (Claude Code launch config, szerkesztők)
+.claude/
+.vscode/
+.idea/

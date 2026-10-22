@@ -1,0 +1,49 @@
+flowchart TD
+  q(["Nagy Péter kérdése:<br/>„Eladtam az autót – mennyi jár vissza<br/>és mikor kapom meg?”"]):::question
+  q --> open["Díjadatok megnyitása<br/>Casco · 30098765"]
+  open --> st["ℹ Visszatérítés jóváhagyás alatt: 154 959 Ft<br/>A nagyobb összegű kifizetéseket munkatársunk ellenőrzi.<br/>Várhatóan 2026. október 12-ig megérkezik."]:::info
+  st --> hd["Szerződés fő adatai<br/>Gépjármű: XYZ-987 · Škoda Octavia<br/>Megszűnés: 2026. 09. 15. – gépjármű eladása"]
+  hd --> tl
+
+  subgraph tl["Idővonal"]
+    direction TB
+    o1["OKTÓBER 5. · Díjvisszatérítés a bankszámlájára<br/>−154 959 Ft · ℹ Jóváhagyás alatt"]:::info
+    o2["OKTÓBER 2. · Áthelyezve az Otthonbiztosítás<br/>(30054321) szerződésre · −20 622 Ft"]:::item
+    j1["JÚNIUS 1. · Díj a megszűnésig<br/>72 819 Ft · ✓ Kifizetve"]:::ok
+    m1["MÁJUS 30. · Befizetés megérkezett (átutalás)<br/>+222 400 Ft"]:::item
+    m2["MÁJUS 29. · Kárkifizetésből rendezett díj<br/>+26 000 Ft"]:::item
+    o1 --> o2 --> j1 --> m1 --> m2
+  end
+
+  o1 -->|"kattint"| e1["A túlfizetést visszautaljuk. A nagyobb összegű<br/>kifizetéseket munkatársunk ellenőrzi,<br/>utána indítjuk az utalást.<br/>─<br/>Bankszámla: 11773016-12345678<br/>Várható érkezés: 2026. október 12."]:::expl
+  o2 -->|"kattint"| e2["Az Ön kérésére ennek a szerződésnek a túlfizetéséből<br/>20 622 Ft-ot áthelyeztünk az Otthonbiztosítás<br/>(30054321) szerződésre.<br/>─<br/>Hivatkozási szám: ÁK-2026-000318"]:::expl
+  e2 -->|"Otthonbiztosítás (30054321) díjadatai →"| sc2(["2. forgatókönyv:<br/>a célszerződés díjadatai"]):::link
+  j1 -->|"kattint"| e3["A szerződés 2026. szeptember 15-én megszűnt,<br/>ezért csak a megszűnésig tartó időszak díját kell megfizetni.<br/>Rendezte: Kárkifizetésből – 26 000 Ft;<br/>Befizetés (átutalás) – 46 819 Ft."]:::expl
+  m1 -->|"kattint"| e4["Ezzel rendeztük: Díj a megszűnésig.<br/>A fennmaradó 175 581 Ft túlfizetés lett."]:::expl
+  m2 -->|"kattint"| e5["Az Ön kérésére a kárkifizetés egy részét<br/>a díj rendezésére fordítottuk.<br/>─<br/>Kárszám: K-2026-004512"]:::expl
+
+  e3 --> calc["Az ügyfél a tételekből összerakja:<br/>26 000 + 222 400 = 248 400 Ft befizetve<br/>− 72 819 Ft díj a megszűnésig<br/>= 175 581 Ft túlfizetés<br/>− 20 622 Ft áthelyezés a lakásbiztosításra<br/>= 154 959 Ft visszatérítés"]:::calc
+  e4 --> calc
+  e5 --> calc
+  e2 --> calc
+  calc --> res(["Érti az összeget és a határidőt<br/>→ nincs CC-hívás"]):::result
+  e1 --> res
+
+  subgraph hidden["Nem jelenik meg az ügyfélnek"]
+    direction TB
+    h1["100 000 Ft-os engedélyezési határ<br/>és a jóváhagyó csoport neve"]:::hidden
+    h2["Az eredeti éves díj (248 400 Ft)<br/>– törölve, megszűnés miatt újraszámolva"]:::hidden
+    h3["Időarányos díj kerekítése (+0,37 Ft)<br/>és a kár leírása"]:::hidden
+  end
+  style tl fill:#fafafc,stroke:#dae1e9,color:#283168
+  style hidden fill:#fff8f7,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+
+  classDef question fill:#ffffff,stroke:#283168,color:#283168,stroke-width:2px
+  classDef info fill:#eef0f8,stroke:#283168,color:#283168
+  classDef ok fill:#e6f7f1,stroke:#00875f,color:#00573d
+  classDef item fill:#ffffff,stroke:#dae1e9,color:#30373d
+  classDef expl fill:#f3f0fb,stroke:#7c6bb0,color:#30373d
+  classDef calc fill:#fafafc,stroke:#4a545e,color:#30373d,stroke-dasharray:2 2
+  classDef hidden fill:#ffffff,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+  classDef result fill:#00875f,stroke:#00875f,color:#ffffff
+  classDef link fill:#e3f4f8,stroke:#0b7285,color:#0b5563

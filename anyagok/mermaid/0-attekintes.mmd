@@ -1,0 +1,34 @@
+flowchart TD
+  start(["Ügyfél belép az Ügyfél Portálra"]):::outside --> list["Szerződéseim"]:::outside
+  list --> pick["Szerződés kiválasztása"]:::outside
+  pick --> menu["„Díjadatok” menüpont"]
+  menu --> status{"Állapotsor<br/>„Rendben vagyok?”"}
+
+  status -->|"lejárt, nem rendezett díj"| s1["⚠ Nem rendezett díj: X Ft<br/>N díjrészlet nincs teljesen kifizetve"]:::warn
+  status -->|"folyamatban lévő visszatérítés"| s2["ℹ Visszatérítés folyamatban / jóváhagyás alatt<br/>összeg és várható érkezés"]:::info
+  status -->|"előre fizetett díj"| s3["✓ Rendezett<br/>előre kifizetve …-ig"]:::ok
+  status -->|"minden rendben"| s4["✓ Rendezett<br/>következő díj: összeg, esedékesség"]:::ok
+
+  s1 --> header
+  s2 --> header
+  s3 --> header
+  s4 --> header
+  header["Szerződés fő adatai<br/>biztosított tárgy · díjfizetés módja · aktuális díj"]
+  header -.->|"igény szerint"| more["További szerződésadatok"]
+  header --> tl["Idővonal<br/>Közelgő díjak + havi bontás, legújabb elöl"]
+  tl --> q{"Érthető a tétel<br/>önmagában?"}
+  q -->|"igen"| done(["Kérdés megválaszolva<br/>CC-hívás nélkül"]):::result
+  q -->|"nem"| expand["Tételre kattint<br/>köznyelvi magyarázat + adatok"]:::expl
+  expand --> act{"Van teendője?"}
+  act -->|"nincs"| done
+  act -->|"van"| todo(["Önálló teendő<br/>pl. új díjösszeg befizetése, banki limit emelése"]):::action
+  expand -.->|"átkönyvelésnél"| link["Link a kapcsolt szerződés díjadataira"]
+  link -.-> menu
+
+  classDef outside fill:#f0f2f5,stroke:#9aa5b1,color:#4a545e,stroke-dasharray:4 3
+  classDef warn fill:#fff4d6,stroke:#c08a00,color:#5c3d00
+  classDef info fill:#eef0f8,stroke:#283168,color:#283168
+  classDef ok fill:#e6f7f1,stroke:#00875f,color:#00573d
+  classDef expl fill:#f3f0fb,stroke:#7c6bb0,color:#30373d
+  classDef result fill:#00875f,stroke:#00875f,color:#ffffff
+  classDef action fill:#283168,stroke:#283168,color:#ffffff

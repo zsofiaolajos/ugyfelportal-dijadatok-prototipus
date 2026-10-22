@@ -1,0 +1,49 @@
+flowchart TD
+  q(["Nagy Péter kérdése:<br/>„Sikertelen volt a díjlehívás – rendben vagyok?<br/>És mi ez a jóváírás?”"]):::question
+  q --> open["Díjadatok megnyitása<br/>Otthonbiztosítás · 30054321"]
+  open --> st["✓ Rendezett<br/>A díjat 2026. december 31-ig előre kifizette."]:::ok
+  st --> hd["Szerződés fő adatai<br/>Díjfizetés módja: csoportos beszedés<br/>Aktuális díj: 6 874 Ft / hó"]
+  hd --> tl
+
+  subgraph tl["Idővonal"]
+    direction TB
+    u1["KÖZELGŐ · Novemberi díj · 6 874 Ft<br/>✓ Előre kifizetve"]:::ok
+    u2["KÖZELGŐ · Decemberi díj · 6 874 Ft<br/>✓ Előre kifizetve"]:::ok
+    o1["OKTÓBER 5. · Októberi díj · 6 874 Ft<br/>✓ Kifizetve"]:::item
+    o2["OKTÓBER 2. · Jóváírás a Casco (30098765)<br/>szerződésről · +20 622 Ft"]:::item
+    s1["SZEPTEMBER 7. · Díjlehívás bankszámláról<br/>+6 874 Ft"]:::item
+    a1["AUGUSZTUS 20. · Befizetés megérkezett (átutalás)<br/>+6 874 Ft"]:::item
+    a2["AUGUSZTUS 5. · ✕ Sikertelen díjlehívás<br/>6 874 Ft (áthúzva)"]:::fail
+    a3["AUGUSZTUS 1. · Díjváltozás (indexálás)<br/>6 500 Ft → 6 874 Ft"]:::item
+    u1 --> u2 --> o1 --> o2 --> s1 --> a1 --> a2 --> a3
+  end
+
+  o2 -->|"kattint"| e1["Az Ön kérésére a Casco (30098765) szerződés<br/>túlfizetését áthelyeztük erre a szerződésre.<br/>Ezzel rendeztük: Októberi, Novemberi, Decemberi díj.<br/>─<br/>Hivatkozási szám: ÁK-2026-000318"]:::expl
+  e1 -->|"Casco (30098765) díjadatai →"| sc4(["4. forgatókönyv:<br/>a forrásszerződés díjadatai"]):::link
+
+  a2 -->|"kattint"| e2["A bank a díjlehívást nem teljesítette.<br/>A díj meghaladta a bankjánál beállított összeghatárt.<br/>Augusztusi díj azóta rendeződött, nincs teendője.<br/>─<br/>Lehívott összeg: 6 874 Ft · Bankszámla: 11773016-12345678"]:::expl
+  a3 -->|"kattint"| e3["2026. augusztus 1-jén a díj indexálás miatt<br/>5,75%-kal változott: 6 500 Ft helyett 6 874 Ft.<br/>Ha a bankjánál összeghatárt állított be a díjlehívásra,<br/>ellenőrizze, hogy az új díj belefér-e."]:::expl
+
+  e1 --> res1(["Érti a jóváírás eredetét<br/>→ nincs CC-hívás"]):::result
+  e2 --> aha{"Felismeri: a banki limit<br/>alacsonyabb az új díjnál"}
+  e3 --> aha
+  aha --> res2(["Megemeli a banki limitet<br/>(önálló teendő a bankjánál)<br/>→ nincs CC-hívás"]):::action
+
+  subgraph hidden["Nem jelenik meg az ügyfélnek"]
+    direction TB
+    h1["Banki visszatérési kód (0412)<br/>és a belső ok-kód („limittúllépés”)"]:::hidden
+    h2["Az augusztusi átutalás közlemény nélkül érkezett,<br/>utólag párosították (párosító munkatárs)"]:::hidden
+    h3["Kerekítés: 6 873,75 Ft → 6 874 Ft"]:::hidden
+  end
+  style tl fill:#fafafc,stroke:#dae1e9,color:#283168
+  style hidden fill:#fff8f7,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+
+  classDef question fill:#ffffff,stroke:#283168,color:#283168,stroke-width:2px
+  classDef ok fill:#e6f7f1,stroke:#00875f,color:#00573d
+  classDef fail fill:#fdecea,stroke:#c0392b,color:#7a2a20
+  classDef item fill:#ffffff,stroke:#dae1e9,color:#30373d
+  classDef expl fill:#f3f0fb,stroke:#7c6bb0,color:#30373d
+  classDef hidden fill:#ffffff,stroke:#c0392b,color:#7a2a20,stroke-dasharray:5 4
+  classDef result fill:#00875f,stroke:#00875f,color:#ffffff
+  classDef action fill:#283168,stroke:#283168,color:#ffffff
+  classDef link fill:#e3f4f8,stroke:#0b7285,color:#0b5563

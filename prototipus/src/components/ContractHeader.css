@@ -1,0 +1,119 @@
+.contract-header__top {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.contract-header__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--ok-bg);
+}
+
+.contract-header__icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: var(--brand-green-dark);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contract-header__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.contract-header__number {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.contract-header__fields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-4) var(--sp-5);
+  margin: var(--sp-5) 0 0;
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
+}
+
+.contract-header__field dt {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.contract-header__field dd {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+/* első betű nagy: "negyedéves" → "Negyedéves" */
+.contract-header__field dd::first-letter {
+  text-transform: uppercase;
+}
+
+/* „További szerződésadatok” – desktopon minden mező látszik, a gomb rejtett */
+.contract-header__more {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .contract-header__fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .contract-header__top {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--sp-3);
+  }
+  .contract-header__icon {
+    width: 40px;
+    height: 40px;
+  }
+  .contract-header__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .contract-header__title {
+    flex-basis: calc(100% - 52px);
+  }
+  /* állapot a cím alá kerül, az ikon után igazítva */
+  .contract-header__top .badge {
+    margin-left: 52px;
+  }
+  .contract-header__fields {
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-4);
+    gap: var(--sp-3) var(--sp-4);
+  }
+  .contract-header__fields:not(.is-expanded) .contract-header__field--extra {
+    display: none;
+  }
+  .contract-header__more {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    margin-top: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--brand-green-dark);
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+  }
+}

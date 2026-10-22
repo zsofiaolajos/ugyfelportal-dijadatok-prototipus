@@ -1,0 +1,122 @@
+.adv-summary {
+  margin-top: var(--sp-5);
+}
+
+.adv-summary__title {
+  margin-bottom: var(--sp-3);
+}
+
+/* Csempék: a szám a főszereplő, a sorok magyarázzák */
+.adv-summary__tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--sp-3);
+}
+
+.adv-tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-3) var(--sp-4);
+  min-width: 0;
+}
+
+.adv-tile__label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.adv-tile__value {
+  margin: 2px 0 var(--sp-1);
+  font-size: 22px;
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.adv-tile__line {
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  line-height: 1.4;
+}
+
+/* Állapot a csempe színezett hátterével és értékszínével – ikon/szöveg mellett */
+.adv-tile--warn { background: var(--warn-bg); border-color: #e9cf86; }
+.adv-tile--warn .adv-tile__value { color: var(--warn); }
+.adv-tile--ok .adv-tile__value { color: var(--ok); }
+.adv-tile--info { background: var(--info-bg); border-color: #c9cee6; }
+.adv-tile--info .adv-tile__value { color: var(--info); }
+.adv-tile--danger { background: var(--danger-bg); border-color: #efb7b0; }
+.adv-tile--danger .adv-tile__value { color: var(--danger); }
+
+/* Függő kifizetések */
+.adv-pending {
+  margin-top: var(--sp-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-3) var(--sp-4);
+}
+
+.adv-pending__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.adv-pending__empty {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+}
+
+.adv-pending__list {
+  list-style: none;
+  margin: var(--sp-2) 0 0;
+  padding: 0;
+}
+
+.adv-pending__row + .adv-pending__row {
+  border-top: 1px solid var(--border);
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+}
+
+.adv-pending__main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+}
+
+.adv-pending__type {
+  font-weight: var(--fw-medium);
+}
+
+.adv-pending__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--sp-2) var(--sp-4);
+  margin: var(--sp-2) 0 0;
+}
+
+.adv-pending__facts dt {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.adv-pending__facts dd {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  overflow-wrap: anywhere;
+}
+
+.adv-pending__amount {
+  font-variant-numeric: tabular-nums;
+}

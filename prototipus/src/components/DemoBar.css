@@ -1,0 +1,123 @@
+/* Szándékosan eltér a Groupama-arculattól: jelzi, hogy nem a termék része. */
+.demo-bar {
+  background: #1f2430;
+  color: #e6e8ee;
+  font-size: var(--fs-sm);
+}
+
+.demo-bar__inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--sp-2) var(--sp-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-5);
+}
+
+.demo-bar__tag {
+  padding: 2px var(--sp-2);
+  border-radius: 4px;
+  background: var(--brand-yellow);
+  color: #1f2430;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.demo-bar__field {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.demo-bar__field > span {
+  color: #a9b0bf;
+}
+
+.demo-bar select {
+  max-width: 100%;
+  min-width: 0;
+  padding: 6px var(--sp-2);
+  border: 1px solid #3a4152;
+  border-radius: 6px;
+  background: #2a3040;
+  color: #fff;
+  font: inherit;
+}
+
+.demo-bar__toggle {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 8px;
+  background: #2a3040;
+  border: 1px solid #3a4152;
+}
+
+.demo-bar__toggle button {
+  padding: 5px var(--sp-3);
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #c9cedb;
+  font: inherit;
+  cursor: pointer;
+}
+
+.demo-bar__toggle button[aria-pressed='true'] {
+  background: var(--brand-green);
+  color: #fff;
+  font-weight: var(--fw-medium);
+}
+
+.demo-bar__toggle button:focus-visible,
+.demo-bar select:focus-visible {
+  outline: 2px solid var(--brand-yellow);
+  outline-offset: 1px;
+}
+
+.demo-bar__today {
+  margin-left: auto;
+  color: #a9b0bf;
+}
+
+/* Mobil: 1. sor címke + dátum, 2. sor választó, 3. sor nézetkapcsoló – a mezőcímkék csak felolvasónak */
+@media (max-width: 760px) {
+  .demo-bar__inner {
+    gap: var(--sp-2);
+  }
+  .demo-bar__today {
+    order: -1;
+    margin-left: auto;
+    font-size: var(--fs-xs);
+  }
+  .demo-bar__tag {
+    order: -2;
+  }
+  .demo-bar__field {
+    width: 100%;
+  }
+  .demo-bar__field > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .demo-bar__field select {
+    flex: 1;
+    min-height: 40px;
+  }
+  .demo-bar__toggle {
+    flex: 1;
+  }
+  .demo-bar__toggle button {
+    flex: 1;
+    min-height: 36px;
+  }
+  .demo-bar__long {
+    display: none;
+  }
+}

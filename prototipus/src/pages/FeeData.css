@@ -1,0 +1,46 @@
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.breadcrumb [aria-current='page'] {
+  color: var(--text);
+}
+
+.fee-data__title {
+  margin: var(--sp-2) 0 var(--sp-5);
+}
+
+/* Mobil: az elérési út utolsó eleme („Díjadatok”) a címben úgyis ott van – egy sorban maradjon */
+@media (max-width: 600px) {
+  .breadcrumb > :nth-last-child(-n + 2) {
+    display: none;
+  }
+  .breadcrumb {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .breadcrumb > :nth-child(3) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .page {
+    padding-top: var(--sp-4);
+  }
+  .fee-data__title {
+    margin: var(--sp-1) 0 var(--sp-4);
+  }
+}
+
+.fee-data__placeholder {
+  margin-top: var(--sp-5);
+  padding: var(--sp-7) var(--sp-4);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  color: var(--text-muted);
+}
