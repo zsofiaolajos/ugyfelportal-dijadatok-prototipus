@@ -58,10 +58,11 @@ function FeeData() {
               <>
                 {/* Ügyintéző: a fejléc után (azonosítás), majd egy pillantásra a díjhelyzet */}
                 <AdvancedSummary adat={ugyintezoOsszesito(contract, osz)} />
-                <LedgerTable adat={fokonyv(fsz, osz)} />
-                {/* Helyőrző: szűrés, párosítás, speciális könyvelések, gyors válaszok (D3–D6) */}
+                {/* key: szerződésváltáskor a szűrők alaphelyzetbe állnak */}
+                <LedgerTable key={contract.szerzodesszam} adat={fokonyv(fsz, osz)} szerzodesszam={contract.szerzodesszam} />
+                {/* Helyőrző: párosítás, speciális könyvelések, gyors válaszok (D4–D6) */}
                 <section className="fee-data__placeholder">
-                  Itt jelenik meg a szűrés, a párosítás és a gyors válaszok (D3–D6 lépések).
+                  Itt jelenik meg a párosítás, a speciális könyvelések és a gyors válaszok (D4–D6 lépések).
                 </section>
               </>
             )}

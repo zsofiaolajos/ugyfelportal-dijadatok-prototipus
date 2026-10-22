@@ -2,8 +2,8 @@ import type { Osszesito } from './account'
 import { isKonyvelt } from './account'
 import { MA } from './dates'
 import { formatDate, formatFt, formatFtDecimal } from './format'
-import { elvarasStatuszLabel, tranzakcioStatuszLabel, tranzakcioTipusok, type Tone } from './labels'
-import type { Folyoszamla } from './types'
+import { elvarasStatuszLabel, tranzakcioStatuszLabel, tranzakcioTipusok, type Kategoria, type Tone } from './labels'
+import type { ElvarasStatusz, Folyoszamla, TranzakcioStatusz } from './types'
 
 /*
  * Ügyintézői főkönyvi tábla (D2) – a megszokott kétblokkos szerkezet:
@@ -26,6 +26,14 @@ export interface TranzakcioSor {
   statusz: { label: string; tone: Tone }
   reszletek: string[]
   halvany: boolean
+  /** nyers értékek szűréshez, rendezéshez és exporthoz (D3) */
+  nyers: {
+    konyveles: string
+    teljesites?: string
+    osszeg: number
+    kategoria: Kategoria
+    statusz: TranzakcioStatusz
+  }
 }
 
 export interface ElvarasSor {
@@ -44,6 +52,16 @@ export interface ElvarasSor {
   statusz: { label: string; tone: Tone }
   reszletek: string[]
   torolt: boolean
+  nyers: {
+    idoszakKezdete: string
+    idoszakVege: string
+    elvaras: number
+    befizetes: number
+    nyitott: number
+    kerekites?: number
+    hatarido: string
+    statusz: ElvarasStatusz
+  }
 }
 
 /** Záró sor: az utolsó könyvelt tétel óta esedékessé vált díjakkal együtt a mai egyenleg. */
@@ -117,6 +135,13 @@ export function fokonyv(fsz: Folyoszamla, osz: Osszesito): Fokonyv {
       statusz: tranzakcioStatuszLabel(t.statusz, 'advanced'),
       reszletek,
       halvany: !szamit,
+      nyers: {
+        konyveles: t.konyvelesDatuma,
+        teljesites: t.teljesitesDatuma,
+        osszeg,
+        kategoria: tranzakcioTipusok[t.tipusKod].kategoria,
+        statusz: t.statusz,
+      },
     }
   })
 
@@ -146,6 +171,16 @@ export function fokonyv(fsz: Folyoszamla, osz: Osszesito): Fokonyv {
         statusz: elvarasStatuszLabel(a.statusz, 'advanced'),
         reszletek,
         torolt: a.statusz === 'TOROLT',
+        nyers: {
+          idoszakKezdete: e.idoszakKezdete,
+          idoszakVege: e.idoszakVege,
+          elvaras: e.elvaras,
+          befizetes: a.befizetes,
+          nyitott: a.nyitott,
+          kerekites: e.kerekites,
+          hatarido: e.hatarido,
+          statusz: a.statusz,
+        },
       }
     })
 

@@ -52,5 +52,5 @@ prezentacio/    a folyamatot bemutató prezentáció (.pptx) és a generáló sz
 | A | Tartalom és szabályok (kód nélkül) | kész |
 | B | Alapok: projekt, arculat, adatréteg, demósáv | kész |
 | C | Ügyfél nézet: állapotsor, idővonal, magyarázatok, mobil | kész |
-| D | Ügyintézői nézet: összesítő (D1), tételtábla (D2) kész; szűrés, párosítás, speciális könyvelések, gyors válaszok (D3–D6) | folyamatban |
+| D | Ügyintézői nézet: összesítő (D1), tételtábla (D2), szűrés/keresés/rendezés/CSV-export (D3) kész; párosítás, speciális könyvelések, gyors válaszok (D4–D6) | folyamatban |
 | E | Teljes végigkattintás, tesztforgatókönyvek, bemutató | hátra van |
